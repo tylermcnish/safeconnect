@@ -83,13 +83,13 @@
     </nav>
 
 
-<section id="intro" class="features">
+<section id="intro" class="intro">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="section-heading">
                     <h2>Design Your System</h2>
-                    <p class="text-muted">With a few basic pieces of information, SafeConnect can recommend an appliance size and roof peg type that will work for your house and matches your electricity needs.  To get started, enter your address</p>
+                    <p class="text-muted">With a few basic pieces of information, SafeConnect can recommend an appliance size and roof peg type that will work for your house and matches your electricity needs.  To get started, enter your address.</p>
                     <br>
                     <br>
                     <form>
@@ -111,14 +111,13 @@
                     <div class="section-heading">
                         <h2>Confirm your location </h2>
                         <p class="text-muted">Please position the pointer on your roof.</p>
-                        <img src="{% static 'img/project_sunroof.png'%}" class="img-responsive" alt="" style="height:500px;display:block;margin-left:auto;margin-right:auto">
+                        <img src="{% static 'img/project_sunroof.png'%}" class="img-responsive" alt="" style="height:400px;display:block;margin-left:auto;margin-right:auto">
                         <br>
                         <a href="#electricity" class="btn btn-outline btn-xl page-scroll">Submit</a>
                         <hr>
                     </div>
                 </div>
             </div>
-          
     </section>
     
     
@@ -127,28 +126,55 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <div class="section-heading">
+                    <div class="section-heading" style="margin-bottom:40px">
                         <h2>Your Electric Bill</h2>
-                        <form>
-                            <input type="text" name="electricity use" value="input average kWh used per month" size="75">
-                            <br>
-                            <br>
-                            <select>
-                                <option value="select">Select your current electricity provider</option>
-                                <option value="PGE">Pacific Gas and Electric</option>
-                                <option value="SFCE">SF Clean Energy</option>
-                                <option value="etc">Etc.</option>
-                            </select>
-                            <br>
-                            <br>
-                
-                                    </form>
-                        <br>
-                        <a href="#home" class="btn btn-outline btn-xl page-scroll">Submit</a>
-                        <hr>
+                        <p class="text-muted">Find the amount of electricity you use per month on your electric bill and enter it below.  This should be an amount measured in kWh.  If your bill presents an average, please use that for the best accuracy.  Alternatively, you can average your last few electric bills and enter the average.</p>
                     </div>
                 </div>
             </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="content">
+                        <img src="{% static 'img/energy_bill.png'%}" class="img-responsive" alt="" style="height:400px;display:block;margin-left:auto;margin-right:auto">
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="content">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <form>
+                            <input type="text" name="electricity use" value="input average kWh used per month" size="75">
+                                <br>
+                                <br>
+                                <select>
+                                    <option value="select">Select your current electricity provider</option>
+                                    <option value="PGE">Pacific Gas and Electric</option>
+                                    <option value="SFCE">SF Clean Energy</option>
+                                    <option value="etc">Etc.</option>
+                                </select>
+                                </form>
+                    </div>
+                </div>
+            </div>
+
+<div class="row">
+    <div class="col-lg-12 text-center">
+        <div class="content">
+            <a href="#home" class="btn btn-outline btn-xl page-scroll">Submit</a>
+            <hr>
+        </div>
+    </div>
+</div>
+
+
         </div>
     </section>
     
@@ -157,7 +183,9 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="section-heading">
-                        <h2>About Your Home</h2>
+                        <h2>About Your Roof</h2>
+                        <p class="text-muted">In order to provide the right roof attachments to your roofing contractors and size your SmartCable, we need to know the approximate height of your roof and the style of your roof.</p>
+                        <br>
                         <form>
                             <select>
                                 <option value="select">Select your roof height</option>
@@ -175,30 +203,50 @@
                                 <option value="corrugated">Corrugated</option>
                             </select>
                             <br>
-                            <br>
-                            <select>
-                                <option value="select">Select your busbar size</option>
-                                <option value="tile">Less than 100 amps</option>
-                                <option value="shingle">100-199 amps</option>
-                                <option value="corrugated">200 amps or greater</option>
-                            </select>
-                            <br>
-                            <br>
-                            <select>
-                                <option value="select">Select your main breaker size</option>
-                                <option value="tile">Less than 100 amps</option>
-                                <option value="shingle">100-199 amps</option>
-                                <option value="corrugated">200 amps or greater</option>
-                            </select>
-                            <br>
-                            <br>
-                            <select>
-                                <option value="select">Is there room for a new breaker at the opposite side of the load center from the main breaker?</option>
-                                <option value="tile">Yes</option>
-                                <option value="shingle">No</option>
-                                <option value="corrugated">I don't know</option>
-                            </select>
+                            <br
                         </form>
+                        <br>
+                        <a href="#electricalsystem" class="btn btn-outline btn-xl page-scroll">Submit</a>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="electricalsystem" class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h2>About Your Electrical System</h2>
+                        <p class="text-muted">In order to make sure your house's electrical system is solar-ready, we need some information about your home's load center (also known as a "main panel").  Your load center will likely be located in your basement, garage, or utility room, and will look something like the picture below.</p>
+                        <img src="{% static 'img/load_center.png'%}" class="img-responsive" alt="" style="height:400px;display:block;margin-left:auto;margin-right:auto">
+                        <form>
+                        <select>
+                            <option value="select">Select your busbar size</option>
+                            <option value="tile">Less than 100 amps</option>
+                            <option value="shingle">100-199 amps</option>
+                            <option value="corrugated">200 amps or greater</option>
+                        </select>
+                        <br>
+                        <br>
+                        <select>
+                            <option value="select">Select your main breaker size</option>
+                            <option value="tile">Less than 100 amps</option>
+                            <option value="shingle">100-199 amps</option>
+                            <option value="corrugated">200 amps or greater</option>
+                        </select>
+                            <br>
+                            <br>
+                        <select>
+                            <option value="select">Is there room for a new breaker at the opposite side of the load center from the main breaker?</option>
+                            <option value="tile">Yes</option>
+                            <option value="shingle">No</option>
+                            <option value="corrugated">I don't know</option>
+                        </select>
+                        </form>
+                        <br>
                         <br>
                         <a href="#system" class="btn btn-outline btn-xl page-scroll">Submit</a>
                         <hr>
@@ -232,6 +280,9 @@
                 <div class="col-lg-12 text-center">
                     <div class="section-heading">
                         <h2>Financing Options</h2>
+                        <br>
+                        <img src="{% static 'img/financing.png'%}" class="img-responsive" alt="" style="height:500px;display:block;margin-left:auto;margin-right:auto">
+                            <br>
                         <p class="text-muted">[Financing options presented here.  Good-looking graphical comparison of savings under different options.]</p>
                         <hr>
                     </div>
