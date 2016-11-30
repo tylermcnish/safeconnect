@@ -1,103 +1,303 @@
 {% load staticfiles %}
 
-
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SafeConnect Solar</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/simple-line-icons/css/simple-line-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/device-mockups/device-mockups.min.css' %}">
+
+    <!-- Theme CSS -->
+    <link href="{% static 'css/new-age.css' %}" rel="stylesheet">
     
-    <head>
-        
-        <meta charset="utf-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
-                    <meta name="description" content="">
-                        <meta name="author" content="">
-                            
-                            <title>Simple Sidebar - Start Bootstrap Template</title>
-                            
-                            <!-- Bootstrap Core CSS -->
-                            <link href="{% static 'css/bootstrap.min.css' %}"rel="stylesheet">
-                                
-                                <!-- Custom CSS -->
-                                <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet">
-                                    
-                                    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-                                    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-                                    <!--[if lt IE 9]>
-                                     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-                                     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-                                     <![endif]-->
-                                    
-    </head>
+      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
     
-    <body>
-        
-        <div id="wrapper">
-            
-            <!-- Sidebar -->
-            <div id="sidebar-wrapper">
-                <ul class="sidebar-nav">
-                    <li class="sidebar-brand">
-                        <a href="#">
-                            SafeConnect Solar
-                        </a>
+
+
+</head>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="page-scroll" href="index">
+                <img src="{% static 'img/safeconnect_logo.jpg'%}" class="img-responsive" alt="" style="height:40px;display:block;margin-left:auto;margin-right:auto">
+               </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#address">Address > </a>
                     </li>
                     <li>
-                        <a href="#">1. Create Account/Login</a>
+                        <a class="page-scroll" href="#electricity">Electric Bill > </a>
                     </li>
                     <li>
-                        <a href="#">2. About your home</a>
+                        <a class="page-scroll" href="#home">About Your Home > </a>
                     </li>
                     <li>
-                        <a href="#">3. Your electrical usage</a>
+                        <a class="page-scroll" href="#financing">Financing Options > </a>
                     </li>
                     <li>
-                        <a href="#">4. House Options</a>
+                        <a class="page-scroll" href="#installation">Schedule Installation > </a>
                     </li>
                     <li>
-                        <a href="#">5. Schedule Receptacle Installation</a>
-                    </li>
-                    <li>
-                        <a href="#">6. Schedule Roof Installation</a>
-                    </li>
-                    <li>
-                        <a href="#">7. Purchase!</a>
+                        <a class="page-scroll" href="#purchase">Purchase! </a>
                     </li>
                 </ul>
             </div>
-            <!-- /#sidebar-wrapper -->
-            
-            <!-- Page Content -->
-            <div id="page-content-wrapper">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1>Design Your System</h1>
-                            <p>With just a few simple pieces of information about your home and electricity usage, SafeConnect can offer you a quotation for a rooftop solar system, and then set you up with local installers who can help you put put it on your roof.  It's the easy, affordable way to go solar.</p>
-                            <p>Let's get started!</p>
-                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                        </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+<section id="intro" class="features">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-heading">
+                    <h2>Design Your System</h2>
+                    <p class="text-muted">With a few basic pieces of information, SafeConnect can recommend an appliance size and roof peg type that will work for your house and matches your electricity needs.  To get started, enter your address</p>
+                    <br>
+                    <br>
+                    <form>
+                        <input type="text" name="address" value="input street address, city, and state" size="75">
+                    </form>
+                    <br>
+                    <a href="#address" class="btn btn-outline btn-xl page-scroll">Submit</a>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section id="address" class="features">
+        <div class="container">
+           <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h2>Confirm your location </h2>
+                        <p class="text-muted">Please position the pointer on your roof.</p>
+                        <img src="{% static 'img/project_sunroof.png'%}" class="img-responsive" alt="" style="height:500px;display:block;margin-left:auto;margin-right:auto">
+                        <br>
+                        <a href="#electricity" class="btn btn-outline btn-xl page-scroll">Submit</a>
+                        <hr>
                     </div>
                 </div>
             </div>
-            <!-- /#page-content-wrapper -->
-            
-        </div>
-        <!-- /#wrapper -->
-        
-        <!-- jQuery -->
-        <script src="js/jquery.js"></script>
-        
-        <!-- Bootstrap Core JavaScript -->
-        <script src="{% static 'js/bootstrap.min.js' %}"></script>
-        
-        <!-- Menu Toggle Script -->
-        <script>
-            $("#menu-toggle").click(function(e) {
-                                    e.preventDefault();
-                                    $("#wrapper").toggleClass("toggled");
-                                    });
-            </script>
-        
-    </body>
+          
+    </section>
     
+    
+    
+    <section id="electricity" class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h2>Your Electric Bill</h2>
+                        <form>
+                            <input type="text" name="electricity use" value="input average kWh used per month" size="75">
+                            <br>
+                            <br>
+                            <select>
+                                <option value="select">Select your current electricity provider</option>
+                                <option value="PGE">Pacific Gas and Electric</option>
+                                <option value="SFCE">SF Clean Energy</option>
+                                <option value="etc">Etc.</option>
+                            </select>
+                            <br>
+                            <br>
+                
+                                    </form>
+                        <br>
+                        <a href="#home" class="btn btn-outline btn-xl page-scroll">Submit</a>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="home" class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h2>About Your Home</h2>
+                        <form>
+                            <select>
+                                <option value="select">Select your roof height</option>
+                                <option value="tile">single story</option>
+                                <option value="shingle">two stories</option>
+                                <option value="corrugated">three stories</option>
+                                <option value="corrugated">four stories stories</option>
+                            </select>
+                                <br>
+                                <br>
+                            <select>
+                                <option value="select">Select your roof type</option>
+                                <option value="tile">Tile</option>
+                                <option value="shingle">Shingle</option>
+                                <option value="corrugated">Corrugated</option>
+                            </select>
+                            <br>
+                            <br>
+                            <select>
+                                <option value="select">Select your busbar size</option>
+                                <option value="tile">Less than 100 amps</option>
+                                <option value="shingle">100-199 amps</option>
+                                <option value="corrugated">200 amps or greater</option>
+                            </select>
+                            <br>
+                            <br>
+                            <select>
+                                <option value="select">Select your main breaker size</option>
+                                <option value="tile">Less than 100 amps</option>
+                                <option value="shingle">100-199 amps</option>
+                                <option value="corrugated">200 amps or greater</option>
+                            </select>
+                            <br>
+                            <br>
+                            <select>
+                                <option value="select">Is there room for a new breaker at the opposite side of the load center from the main breaker?</option>
+                                <option value="tile">Yes</option>
+                                <option value="shingle">No</option>
+                                <option value="corrugated">I don't know</option>
+                            </select>
+                        </form>
+                        <br>
+                        <a href="#system" class="btn btn-outline btn-xl page-scroll">Submit</a>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="system" class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h2>We've Designed A Solar Appliance for You!</h2>
+                           <p class="text-muted">Your house's electrical system and roof can accommodate a PV appliance of up to ____ in size.  Based on your electricity use, we recommend an appliance of ___ in size.  This will provide ___ kWh per year, or __ % of your annual electricity use.   We estimate that this will save you up to ___ per year, depending on the financing options you select in the next section.</p>
+                           <br>
+                           <img src="{% static 'img/smartbox_diagram.png'%}" class="img-responsive" alt="" style="height:500px;display:block;margin-left:auto;margin-right:auto">
+                            <br>
+                           <a href="#financing" class="btn btn-outline btn-xl page-scroll">Select financing options</a>
+                            <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="financing" class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h2>Financing Options</h2>
+                        <p class="text-muted">[Financing options presented here.  Good-looking graphical comparison of savings under different options.]</p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="installation" class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h2>Schedule Installation</h2>
+                        <p class="text-muted">[This section would contain date pickers to select dates for installation.]</p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="purchase" class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h2>Sign Forms and Purchase</h2>
+                        <p class="text-muted">[This section would contain: (1) create username and password; (2) docusign required forms for financing; and (3) purchase system with credit card (depending on financing selection)]</p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2016 Start Bootstrap. All Rights Reserved.</p>
+            <ul class="list-inline">
+                <li>
+                    <a href="#">Privacy</a>
+                </li>
+                <li>
+                    <a href="#">Terms</a>
+                </li>
+                <li>
+                    <a href="#">FAQ</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="{% static 'js/new-age.min.js' %}"></script>
+
+</body>
+
 </html>
