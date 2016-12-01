@@ -59,21 +59,36 @@ class Appliance_Installation(models.Model):
         return self.name
 
 class House(models.Model):
-    name=models.CharField(max_length=200)
     address=models.CharField(max_length=200)
-    main_service_capacity=models.IntegerField(default=0)
-    insolation=models.IntegerField(default=0)
-    monthly_electricity_usage=models.DecimalField(max_digits=5, decimal_places=2, default=0)
+    insolation=models.IntegerField(default=5)
+    roof_slope=models.DecimalField(max_digits=5, decimal_places=2, default=0)
+    roof_area=models.DecimalField(max_digits=9, decimal_places=2, default=3000)
+    monthly_electricity_usage=models.DecimalField(max_digits=5, decimal_places=0, default=600)
+    PGE='PG&E'
+    SF='SF Clean Energy'
+    OTHER='Other'
+    UTILITY_CHOICES = ((PGE,"PG&E"),(SF,"SF Clean Energy"),(OTHER,"Other"))
+    your_current_electricity_provider=models.CharField(max_length=200, choices=UTILITY_CHOICES, default='PGE')
     ASPHALT='Asphalt'
     CORRUGATED='Corrugated'
     TILE='Tile'
     ROOF_CHOICES = ((ASPHALT,"Asphalt"),(CORRUGATED,"Corrugated"),(TILE,"Tile"))
     roof_type=models.CharField(max_length=200, choices=ROOF_CHOICES, default='Asphalt')
+    ONESTORY='One Story'
+    TWOSTORIES='Two Stories'
+    THREESTORIES='Three Stories'
+    HEIGHT_CHOICES = ((ONESTORY,"One Story"),(TWOSTORIES,"Two Stories"),(THREESTORIES,"Three Stories"))
+    stories=models.CharField(max_length=200, choices=HEIGHT_CHOICES, default='One Story')
     roof_height=models.DecimalField(max_digits=5, decimal_places=2, default=0)
-    roof_slope=models.DecimalField(max_digits=5, decimal_places=2, default=0)
-    roof_area=models.DecimalField(max_digits=5, decimal_places=2, default=0)
+    busbar_capacity=models.DecimalField(max_digits=9, decimal_places=0, default=100)
+    main_breaker_size=models.DecimalField(max_digits=9, decimal_places=0, default=100)
+    YES='Yes'
+    NO='No'
+    IDK='Help me figure it out'
+    ROOM_CHOICES = ((YES,"Yes"),(NO,"No"),(IDK,"Help me figure it out"))
+    is_there_room_for_new_breaker_opposite_main_breaker=models.CharField(max_length=200, choices=ROOM_CHOICES, default="Yes")
     def __str__(self):
-        return self.name
+        return self.address
 
 class System(models.Model):
     system_size=models.DecimalField(max_digits=5, decimal_places=2, default=0)
