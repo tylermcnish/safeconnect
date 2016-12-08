@@ -28,6 +28,7 @@
 
     <!-- Theme CSS -->
     <link href="{% static 'css/new-age.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/custom.css' %}" rel="stylesheet">
     
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -42,6 +43,7 @@
 
 <body id="page-top">
 
+
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -50,7 +52,9 @@
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
                 
-                <a class="navbar-brand page-scroll" href="#page-top">SafeConnect Solar</a>
+                <a class="page-scroll" href="#page-top">
+                    <img src="{% static 'img/safeconnect_logo.jpg'%}" class="img-responsive" alt="" style="height:40px;display:block;margin-left:auto;margin-right:auto">
+                </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -63,7 +67,7 @@
                         <a class="page-scroll" href="#">Installer Login</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="/design">Customer Login</a>
+                        <a class="page-scroll" href="/address">Customer Login</a>
                     </li>
                 </ul>
             </div>
@@ -80,18 +84,19 @@
                 <div class="header-content">
                     <div class="header-content-inner">
                         <h1>SafeConnect is the easy, affordable way to go solar</h1>
-                        <a href="/design" class="btn btn-outline btn-xl page-scroll">Design Your System</a>
+                        <a href="/address" class="btn btn-outline btn-xl page-scroll">Design Your System</a>
                         <a href="#learn_more" class="btn btn-outline btn-xl page-scroll">Learn More</a>
                     </div>
                 </div>
             </div>
             <div class="col-sm-5">
                 <div class="device-container">
-                    <div class="device-mockup ipad_air_2 portrait white">
+                    <!-- Put a class with device name in below div to make image inside device. -->
+                    <div>
                         <div class="device">
                             <div class="screen">
                                 <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                                <img src="/static/img/solar_house_cropped.png" class="img-responsive" alt="">
+                                <img src="/static/img/smartbox_blue_2.png" class="img-responsive" alt="">
                                     </div>
                             <div class="button">
                                 <!-- You can hook the "home button" to some JavaScript events or just remove it -->
@@ -122,7 +127,7 @@
                             <div class="device">
                                 <div class="screen">
                                     <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                                    <img src="{% static 'img/smartbox_diagram.png'%}" class="img-responsive" alt=""> </div>
+                                    <img src="{% static 'img/screenshot.png'%}" class="img-responsive" alt=""> </div>
                                 <div class="button">
                                     <!-- You can hook the "home button" to some JavaScript events or just remove it -->
                                 </div>
@@ -143,18 +148,18 @@
                            
                             <div class="col-md-6">
                                 <div class="feature-item">
-                                    <i class="icon-power text-primary"></i>
-                                    <h3>It just works</h3>
-                                    <p class="text-muted">SafeConnect sells solar appliances, not materials.  Everything works together out of the box and is UL-certified as an appliance.  This aproach allows us to beat our competitors prices by 50%.</p>
+                                    <i class="icon-wallet text-primary"></i>
+                                    <h3>No Money Down</h3>
+                                    <p class="text-muted">If you sign up for our third party financing, you can start saving money on your electrical bill with no money down and no risk.  (We also offer cash purcahse options.)</p>
                                 </div>
                             </div>
                             
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="feature-item">
-                                    <i class="icon-wrench text-primary"></i>
-                                    <h3>Easy to install</h3>
-                                    <p class="text-muted">SafeConnect helps you hire an electrician to install a PV plug (akin to a dryer plug) and a roofer to install roof mounts.  The rest of your system is an appliance that can be installed by anyone.</p>
+                                    <i class="icon-power text-primary"></i>
+                                    <h3>It just works</h3>
+                                    <p class="text-muted">SafeConnect sells solar appliances, not materials.  Everything works together out of the box and is UL-certified as an appliance.</p>
                                 </div>
                             </div>
                             
@@ -177,16 +182,14 @@
                 <div class="col-lg-12 text-center">
                     <div class="section-heading">
                         <h2>A better deal</h2>
-                        <p class="text-muted">SafeConnect's customers save over $5,000 more on average over the life of their systems than our competitors.*</p>
+                        <p class="text-muted">SafeConnect's customers save over $5,000 more on average over the life of their systems than our competitors.*  By "appliancizing" solar, SafeConnect has reduced the cost of design, sales, installation, and permitting.  This allows us to offer our customers lower prices and greater savings than our competitors. </p>
                         <hr>
                     </div>
                 </div>
             </div>
+        </div>
         <div class="container">
           <img src="{% static 'img/competition.png'%}" class="img-responsive" alt="" style="height:500px;display:block;margin-left:auto;margin-right:auto">
-              </div>
-        <div class="container">
-                  <p style="text-align: center" class="text-muted">By "appliancizing" solar, SafeConnect has reduced the cost of design, sales, installation, and permitting.  This allows us to offer our customers lower prices and greater savings than our competitors.   Our competitors will offer you "estimated savings" or "preliminary quotes" -- but they won't be able to sell you a system without sales calls, custom design work, and specialized permitting.  We don't just estimate the cost of your system--we'll actually ship it to you as soon as you sign our online, zero-money-down paperwork.   And we'll help you choose an installer at a fixed price from our list of certified installation partners.</p>
         </div>
     </section>
     
@@ -196,7 +199,7 @@
                 <div class="col-lg-12 text-center">
                     <div class="section-heading">
                         <h2>A complete solar appliance.</h2>
-                        <p class="text-muted">SafeConnect's patent-pending technology has appliancized solar.</p>
+                        <p class="text-muted">SafeConnect's patent-pending technology has appliancized solar.  Our competitors will offer you "estimated savings" or "preliminary quotes" -- but they won't be able to sell you a system without sales calls, custom design work, and specialized permitting.  We don't just estimate the cost of your system--we'll actually ship it to you as soon as you sign our online, zero-money-down paperwork.   And we'll help you choose an installer at a fixed price from our list of certified installation partners.</p>
                         <hr>
                     </div>
                 </div>
@@ -212,8 +215,8 @@
     <section class="cta">
         <div class="cta-content">
             <div class="container">
-                <h2>Stop waiting.<br>Get a quote.</h2>
-                <a href="/design"  class="btn btn-outline btn-xl page-scroll">Let's Get Started!</a>
+                <h2>Stop waiting.<br>Start saving.</h2>
+                <a href="/address"  class="btn btn-outline btn-xl page-scroll">Let's Get Started!</a>
             </div>
         </div>
         <div class="overlay"></div>
@@ -236,22 +239,7 @@
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2016 Start Bootstrap. All Rights Reserved.</p>
-            <ul class="list-inline">
-                <li>
-                    <a href="#">Privacy</a>
-                </li>
-                <li>
-                    <a href="#">Terms</a>
-                </li>
-                <li>
-                    <a href="#">FAQ</a>
-                </li>
-            </ul>
-        </div>
-    </footer>
+
 
     <!-- jQuery -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
@@ -263,7 +251,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
     <!-- Theme JavaScript -->
-    <script src="{% static 'js/new-age.min.js' %}"></script>
+    <script src="{% static 'js/new-age.js' %}"></script>
 
 </body>
 

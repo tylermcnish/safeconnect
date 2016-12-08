@@ -34,6 +34,7 @@ a:hover,
 a:focus {
   color: #fcbd20;
 }
+
 hr {
   max-width: 100px;
   margin: 25px auto 0;
@@ -99,13 +100,14 @@ p {
 }
 .navbar-default .nav > li.active > a,
 .navbar-default .nav > li.active > a:focus {
-  color: #fdcc52 !important;
+  color: #fdcc52;
   background-color: transparent;
 }
 .navbar-default .nav > li.active > a:hover,
 .navbar-default .nav > li.active > a:focus:hover {
   background-color: transparent;
 }
+
 @media (min-width: 768px) {
   .navbar-default {
     background-color: transparent;
@@ -141,10 +143,17 @@ p {
   .navbar-default.affix .nav > li > a:focus {
     color: #222222;
   }
+    
   .navbar-default.affix .nav > li > a:hover,
   .navbar-default.affix .nav > li > a:focus:hover {
     color: #fdcc52;
   }
+    
+     .navbar-default.affix .nav > li > a.disabled,
+  .navbar-default.affix .nav > li > a.disabled:focus {
+    color: darkgrey important!;
+  }
+    
 }
 header {
   position: relative;
@@ -383,11 +392,14 @@ section.contact ul.list-social li.social-google-plus a {
 section.contact ul.list-social li.social-google-plus a:hover {
   background-color: #d73925;
 }
-footer {
-  background-color: #222222;
+footer#footer {
+  background-color: white;
   padding: 25px 0;
   color: rgba(255, 255, 255, 0.3);
-  text-align: center;
+  text-align: left;
+   position:fixed;
+    height:2%;
+    top:98%;
 }
 footer p {
   font-size: 12px;

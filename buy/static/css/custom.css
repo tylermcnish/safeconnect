@@ -1,0 +1,67 @@
+nav a.disabled {
+    color: darkgrey !important;
+}
+
+.hide {
+    position: absolute !important;
+    left: -9999px !important;
+}
+
+footer p.data {
+    color: rgba(255, 255, 255, 0.3);
+    text-align: left;
+}
+
+footer p.data.hide {
+    color: grey;
+}
+
+
+.btn-outline {
+    color: #F48230;
+    background-color: white;
+    border-color: #F48230;
+    border: 1px solid;
+}
+
+.btn-outline:hover,
+.btn-outline:focus,
+.btn-outline:active,
+.btn-outline.active {
+    color: white;
+    background-color: #F48230;
+    border-color: #F48230
+    border: 1px solid;
+}
+
+header {
+    background: none;
+    background-color: white;
+    color: #245BA6 !important;
+}
+
+
+/* Sticky footer styles------------------------------------ */
+
+html,
+body {
+    height: 100%;
+    /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+    min-height: 100%;
+    height: auto;
+    /* Negative indent footer by its height */
+    margin: 0 auto -200px;
+    /* Pad bottom by footer height */
+    padding: 0 0 200px;
+}
+
+/* Set the fixed height of the footer here */
+footer {
+    height: 200px;
+    width:100%;
+    background-color:grey
+}

@@ -1,0 +1,399 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SafeConnect Solar</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/simple-line-icons/css/simple-line-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/device-mockups/device-mockups.min.css' %}">
+
+    <!-- Theme CSS -->
+    <link href="{% static 'css/new-age.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+    
+      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+
+
+</head>
+
+<body id="page-top">
+<div id="wrap">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="page-scroll" href="index">
+                <img src="{% static 'img/safeconnect_logo.jpg'%}" class="img-responsive" alt="" style="height:40px;display:block;margin-left:auto;margin-right:auto">
+               </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="/address">Address > </a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/electricity">Electric Bill > </a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/roof">Roof > </a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/electricalsystem">House Electrical > </a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#system">Financing  > </a>
+                    </li>
+                    <li>
+                        <a class="page-scroll"  href="#installation"> Installation > </a>
+                    </li>
+                    <li>
+                        <a class="page-scroll disabled" >Purchase! </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+
+    <section id="system" class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading" style="margin-bottom:40px">
+                        <h2>Your Solar Appliance is Ready to Ship!</h2>
+                        <p class="text-muted">Your house's electrical system can accommodate a PV Appliance of up to {{ max_electrical_system_capacity_kW}} kW in size, and your roof can accommodate a PV appliance of up to {{ max_roof_capacity}} kW in size.  Based on your electricity use, you could use a system of up to {{ desired_system_capacity}} kW.  Based on these constraints, we recommend an appliance of {{ system_capacity}} kW in size, with a {{ smartbox_size}} A SmartBox.  This will provide {{ system_production }} kWh per year, or {{ percent_of_electric_bill}} % of your annual electricity use.</p>
+                        <br>
+                        <br>
+                        <p class="text-muted">Here's what we'll ship to you:</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                
+                <div class="col-md-6">
+                    <div class="section-heading" style="text-align: center;">
+                        <img src="{% static 'img/AC_Module.jpeg'%}" class="img-responsive" alt="" style="height:250px;display:block;margin-left:auto;margin-right:auto">
+                         <h3>AC PV Modules</h3>
+                         <p class="text-muted">Your PV appliance will have {{number_of_modules}} modules of 240 watts each, for a total capacity of {{system_capacity}} kW.  These modules will snap together using touch-safe cabling.  Touch-safe, weatherproof cabling will connect the complete array to SafeConnect's proprietary SmartBox, which will ensure that a safe number of modules are installed and continuosly monitor your system for any electrical danger.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="section-heading" style="text-align: center;">
+                        <img src="{% static 'img/smartbox_blue.png'%}" class="img-responsive" alt="" style="height:250px;display:block;margin-left:auto;margin-right:auto">
+                        <h3>SmartBox and Cable</h3>
+                        <p class="text-muted">The "brains" of you PV appliance will be SafeConnect's proprietary safety smartbox, which will ensure the system is installed correctly before allowing it to operate.  We'll also ship the touch-safe, plug-and-play cables needed to connect the AC PV modules to each other and a {{cable_length}}-foot cable to connect the modules to the SmartBox.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="section-heading" style="text-align: center;">
+                        <img src="{% static 'img/quickmount.jpeg'%}" class="img-responsive" alt="" style="height:250px;display:block;margin-left:auto;margin-right:auto">
+                            <h3>Roof Mounting</h3>
+                            <p class="text-muted">Your PV appliance will attach to your {{roof_type}} roof using {{number_of_modules}} footers, which will be bolted to roof rafters and flashed.  We'll help you schedule a local roofer to install the footers for you after you review your financing options.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="section-heading" style="text-align: center;">
+                        <img src="{% static 'img/specpac.jpeg'%}" class="img-responsive" alt="" style="height:250px;display:block;margin-left:auto;margin-right:auto">
+                        <h3>PV Plug</h3>
+                        <p class="text-muted">Like all SafeConnect Solar appliances, your appliance will be connected to 240 V "PV Plug" wired by an electrician to your load center.  We'll help you schedule an electrician to get this done after you review your financing options.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                            <a href="#financing" class="btn btn-outline btn-xl page-scroll">Select financing options</a>
+                            <hr>
+                            <br>
+                            <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="financing" class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h2>Financing Options</h2>
+                        <br>
+                        <img src="{% static 'img/financing.png'%}" class="img-responsive" alt="" style="height:500px;display:block;margin-left:auto;margin-right:auto">
+                            <br>
+                            <p class="text-muted">[Note: not yet functional.  See Project Sunroof or Geostellar for examples of sites that do a good job of presenting this information.  Idea is that customer would select from a menu of financing options, and then move on to next step.]</p>
+                            <br>
+                            <a href="#installation" class="btn btn-outline btn-xl page-scroll">Schedule Installation</a>
+                            <a href="#purchase" class="btn btn-outline btn-xl page-scroll">Check Out Now - Schedule Installation Yourself</a>
+                            <br>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="installation" class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h2>Schedule PV Plug Installation</h2>
+                        <p class="text-muted">Select a date to see SafeConnect electrician partners available to install your PV Plug.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="section-heading" style="text-align: center;">
+                        <h3>Select Date</h3>
+                        <p class="text-muted">[Date Picker Here]</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="section-heading" style="text-align: center;">
+                        <h3>Available Installers</h3>
+                        <p class="text-muted">[List of Installer Profiles here]</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <a href="#installation2" class="btn btn-outline btn-xl page-scroll">Schedule Roof Installation</a>
+                    <br>
+                    <hr>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="installation2" class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h2>Schedule Roof Mount Installation</h2>
+                        <p class="text-muted">Select a date to see SafeConnect electrician partners available to install your roof mounts.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="section-heading" style="text-align: center;">
+                        <h3>Select Date</h3>
+                        <p class="text-muted">[Date Picker Here]</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="section-heading" style="text-align: center;">
+                        <h3>Available Installers</h3>
+                        <p class="text-muted">[List of Installer Profiles here]</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <a href="#installation3" class="btn btn-outline btn-xl page-scroll">Schedule Appliance Installation</a>
+                    <br>
+                    <hr>
+                    <br>
+                </div>
+            </div>
+        </div>
+        </section>
+        
+        <section id="installation3" class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h2>Schedule Appliance Delivery and Installation</h2>
+                        <p class="text-muted">Select a date to see SafeConnect electrician partners available to install your appliance.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="section-heading" style="text-align: center;">
+                        <h3>Select Date</h3>
+                        <p class="text-muted">[Date Picker Here]</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="section-heading" style="text-align: center;">
+                        <h3>Available Installers</h3>
+                        <p class="text-muted">[List of Installer Profiles here]</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <a href="#purchase" class="btn btn-outline btn-xl page-scroll">Check Out</a>
+                    <br>
+                    <hr>
+                    <br>
+                </div>
+            </div>
+        </div>
+        </section>
+    
+    <section id="purchase" class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h2>Sign Forms and Purchase</h2>
+                        <p class="text-muted">[This section would contain: (1) create username and password; (2) docusign required forms for financing; and (3) purchase system with credit card (depending on financing selection)]</p>
+                        <br>
+                        
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+  </div>
+    <footer>
+        <div class="container">
+            <div class="col-lg-12">
+                <p class="data" style="text-align:center;font-weight:bold">Address: {{address}}</p>
+                <br>
+            </div>
+            <div class="col-sm-4">
+                <div class="content">
+                    <ul class="list-unstyled">
+                        <li>
+                            <p class="data">Usable Roof Area: {{roof_area}} m2</p>
+                        </li>
+                        <li>
+                            <p class="data">Max Roof Capacity: {{max_roof_capacity}} kW</p>
+                        </li>
+                        <li>
+                            <p class="data">Insolation: {{insolation}} kWh/m2/y</p>
+                        </li>
+                        <li>
+                            <p class="data">Max Roof Production: {{max_roof_production}} kWh/y</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="content">
+                    <ul class="list-unstyled">
+                        <li>
+                            <p class="data">Monthly Electricity Usage: {{monthly_electricity_usage}} kWh<p>
+                        </li>
+                        <li>
+                            <p class="data">System Size to Minimize Electric Bill: {{desired_system_capacity}} kW<p>
+                        </li>
+                        <li>
+                            <p class="data">Cable Length: {{cable_length}} ft<p>
+                        </li>
+                        <li>
+                            <p class="data">Roof Type: {{roof_type}} </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <ul class="list-unstyled">
+                    <li>
+                        <p class="data">Max Electrical System Capacity: {{max_electrical_system_capacity_kW}} kW<p>
+                    </li>
+                    <li>
+                        <p class="data">Recommended System Capacity:{{system_capacity}} kW<p>
+                    </li>
+                    <li>
+                        <p class="data">Smartbox Size: {{smartbox_size}} A<p>
+                    </li>
+                    <li>
+                        <p class="data">System Value: ${{system_value}}</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <br>
+            <ul class="list-inline">
+                <li>
+                    <p>&copy; 2016 Energy Development LLC. All Rights Reserved.</p>
+                </li>
+                <li>
+                    <a href="#">Privacy</a>
+                </li>
+                <li>
+                    <a href="#">Terms</a>
+                </li>
+                <li>
+                    <a href="#">FAQ</a>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="{% static 'js/new-age.js' %}"></script>
+
+</body>
+
+</html>

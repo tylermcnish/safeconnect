@@ -55,19 +55,20 @@
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
+            <!-- Need to make sure these work linked to external pages -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#address">Address > </a>
+                        <a class="page-scroll" href="design2/#address">Address > </a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#electricity">Electric Bill > </a>
+                        <a class="page-scroll" href="/design2/#electricity">Electric Bill > </a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#roof">Roof > </a>
+                        <a class="page-scroll" href="/design2/#roof">Roof > </a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#electricalsystem">House Electrical > </a>
+                        <a class="page-scroll" href="/design2/#electricalsystem">House Electrical > </a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#system">Financing  > </a>
@@ -86,140 +87,6 @@
     </nav>
 
 
-<section id="intro" class="intro">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="section-heading">
-                    <h2>Design Your System</h2>
-                    <p class="text-muted">With a few basic pieces of information, SafeConnect can recommend an appliance size and roof peg type that will work for your house and matches your electricity needs.  To get started, enter your address.</p>
-                    <br>
-                    <br>
-                    <br>
-                    <form method="POST" class="House_Form" action="design" id="address_form">{% csrf_token %}
-                    {{ house_form.as_p }}
-                    <!--<button type="submit" class="">Submit</button>-->
-                    </form>
-                    <br>
-                    <a href="#address" onclick="document.getElementById('address_form').submit();" class="btn btn-outline btn-xl page scroll">Submit</a>
-                    <!--<a href="#address" class="btn btn-outline btn-xl page-scroll">Submit</a>-->
-                    <hr>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <section id="address" class="features">
-        <div class="container">
-           <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="section-heading">
-                        <h2>Confirm your location </h2>
-                        <p class="text-muted">Please position the pointer on your roof.</p>
-                        <img src="{% static 'img/project_sunroof.png'%}" class="img-responsive" alt="" style="height:400px;display:block;margin-left:auto;margin-right:auto">
-                        <br>
-                        <a href="#electricity" class="btn btn-outline btn-xl page-scroll">Submit</a>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-    </section>
-    
-    
-    
-    <section id="electricity" class="features">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="section-heading" style="margin-bottom:40px">
-                        <h2>Your Electric Bill</h2>
-                        <p class="text-muted">Find the amount of electricity you use per month on your electric bill and enter it below.  This should be an amount measured in kWh.  If your bill presents an average, please use that for the best accuracy.  Alternatively, you can average your last few electric bills and enter the average.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="content">
-                        <img src="{% static 'img/energy_bill.png'%}" class="img-responsive" alt="" style="height:400px;display:block;margin-left:auto;margin-right:auto">
-                    </div>
-                </div>
-                
-                <div class="col-md-6">
-                    <div class="content">
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <form method="POST" class="Electricity_Form" action="design" id="electricity_form">{% csrf_token %}
-                            {{ electricity_form.as_p }}
-                            <!--<button type="submit" class="">Submit</button>-->
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-<div class="row">
-    <div class="col-lg-12 text-center">
-        <div class="content">
-            <a href="#roof" onclick="document.getElementById('electricity_form').submit();" class="btn btn-outline btn-xl page-scroll">Submit</a>
-            <hr>
-        </div>
-    </div>
-</div>
-
-
-        </div>
-    </section>
-    
-    <section id="roof" class="features">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="section-heading">
-                        <h2>About Your Roof</h2>
-                        <p class="text-muted">In order to provide the right roof attachments to your roofing contractors and size your SmartCable, we need to know the approximate height of your roof and the style of your roof.</p>
-                        <br>
-                        <form method="POST" class="Roof_Form" action="design" id="roof_form">{% csrf_token %}
-                            {{ roof_form.as_p }}
-                            <!--<button type="submit" class="">Submit</button>-->
-                        </form>
-                        <br>
-                        <a href="#electricalsystem" onclick="document.getElementById('roof_form').submit();" class="btn btn-outline btn-xl page-scroll">Submit</a>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="electricalsystem" class="features">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="section-heading">
-                        <h2>About Your Electrical System</h2>
-                        <p class="text-muted">In order to make sure your house's electrical system is solar-ready, we need some information about your home's load center (also known as a "main panel").  Your load center will likely be located in your basement, garage, or utility room, and will look something like the picture below.</p>
-                        <img src="{% static 'img/load_center.png'%}" class="img-responsive" alt="" style="height:400px;display:block;margin-left:auto;margin-right:auto">
-                      
-                        <br>
-                        <form method="POST" class="Electrical_Service_Form" action="design" id="electrical_service_form">{% csrf_token %}
-                            {{ electrical_service_form.as_p }}
-                            <!--<button type="submit" class="">Submit</button>-->
-                        </form>
-                        <br>
-                        <a href="#system" onclick="document.getElementById('electrical_service_form').submit();" class="btn btn-outline btn-xl page-scroll">Submit</a>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     
     <section id="system" class="features">
         <div class="container">

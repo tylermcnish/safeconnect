@@ -1,0 +1,228 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SafeConnect Solar</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/simple-line-icons/css/simple-line-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/device-mockups/device-mockups.min.css' %}">
+
+    <!-- Theme CSS -->
+    <link href="{% static 'css/new-age.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+ 
+
+
+</head>
+
+<body id="page-top">
+<div id="wrap">
+
+    <nav id="mainNav" class="navbar navbar-default affix navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="page-scroll" href="index">
+                <img src="{% static 'img/safeconnect_logo.jpg'%}" class="img-responsive" alt="" style="height:40px;display:block;margin-left:auto;margin-right:auto">
+               </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <!-- Need to grey out for inaccessible pages -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll"  href="#address">Address > </a>
+                    </li>
+                    <li>
+                        <a class="disabled">Electric Bill > </a>
+                    </li>
+                    <li>
+                        <a class="disabled">Roof > </a>
+                    </li>
+                    <li>
+                        <a class="disabled">House Electrical > </a>
+                    </li>
+                    <li>
+                        <a class="disabled">Financing  > </a>
+                    </li>
+                    <li>
+                        <a class="disabled"> Installation > </a>
+                    </li>
+                    <li>
+                        <a class="disabled">Purchase! </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+<section id="address" class="features">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-heading">
+                    <h2>Design Your System</h2>
+                    <p class="text-muted">With a few basic pieces of information, SafeConnect can recommend an appliance size and roof peg type that will work for your house and matches your electricity needs.  To get started, enter your address.</p>
+                    <br>
+                    <br>
+                    <br>
+                    <form method="POST" class="House_Form" action="address" id="address_form">{% csrf_token %}
+                    {{ house_form.as_p }}
+                    <!--<button type="submit" class="">Submit</button>-->
+                    </form>
+                    <br>
+                    <a href="#address2" class="btn btn-outline btn-xl page scroll" onclick="show()">Submit</a>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+<section id="address2" class="features hide">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-heading">
+                    <h2>Confirm your location </h2>
+                    <p class="text-muted">Please position the pointer on your roof.</p>
+                    <img src="{% static 'img/project_sunroof.png'%}" class="img-responsive" alt="" style="height:400px;display:block;margin-left:auto;margin-right:auto">
+                    <p class="text-muted">[Note: this section is not yet functional, but would be the Project SunRoof or Geostellar functionality that would (1) use a 3D model of the customer's roof and shading to generate a max system size and (2) use an insolation database to estimate system production.  A big uncertainty is whether we can really do (1) without an on-site visit.  We also may need an extra step in which the customer positions the modules on the roof, both to validate that the system will fit on the roof, and to give users confidence regarding how the system will look.]</p>
+                    <br>
+                    <a href="#electricity" onclick="document.getElementById('address_form').submit();" class="btn btn-outline btn-xl page-scroll">Submit</a>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+ </section>
+
+<footer>
+    <div class="container">
+        <div class="col-lg-12">
+            <p class="data hide" style="text-align:center;font-weight:bold">Address: {{address}}</p>
+            <br>
+        </div>
+        <div class="col-sm-4">
+            <div class="content">
+                <ul class="list-unstyled">
+                    <li>
+                        <p class="data hide">Usable Roof Area: {{roof_area}} m2</p>
+                    </li>
+                    <li>
+                        <p class="data hide">Max Roof Capacity: {{max_roof_capacity}} kW</p>
+                    </li>
+                    <li>
+                        <p class="data hide">Insolation: {{insolation}} kWh/m2/y</p>
+                    </li>
+                    <li>
+                        <p class="data hide">Max Roof Production: {{max_roof_production}} kWh/y</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="content">
+                <ul class="list-unstyled">
+                    <li>
+                        <p class="data hide">Monthly Electricity Usage: {{monthly_electricity_usage}} kWh<p>
+                    </li>
+                    <li>
+                        <p class="data hide">System Size to Minimize Electric Bill: {{desired_system_capacity}} kW<p>
+                    </li>
+                    <li>
+                        <p class="data hide">Cable Length: {{cable_length}} ft<p>
+                    </li>
+                    <li>
+                        <p class="data hide">Roof Type: {{roof_type}} </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <ul class="list-unstyled">
+                <li>
+                    <p class="data hide">Max Electrical System Capacity: {{max_electrical_system_capacity_kW}} kW<p>
+                </li>
+                <li>
+                    <p class="data hide">Recommended System Capacity:{{system_capacity}} kW<p>
+                </li>
+                <li>
+                    <p class="data hide">Smartbox Size: {{smartbox_size}} A<p>
+                </li>
+                <li>
+                    <p class="data hide">-</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <br>
+        <ul class="list-inline">
+            <li>
+                <p>2016 Energy Development LLC. All Rights Reserved.</p>
+            </li>
+            <li>
+                <a href="#">Privacy</a>
+            </li>
+            <li>
+                <a href="#">Terms</a>
+            </li>
+            <li>
+                <a href="#">FAQ</a>
+            </li>
+        </ul>
+    </div>
+    </div>
+</footer>
+
+    <!-- jQuery -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="{% static 'js/new-age.js' %}"></script>
+    
+    <script type="text/javascript">
+        function show() {
+            document.getElementById("address2").className = "";
+            document.getElementById("address2").className = "features";
+            document.getElementById("address").className = "features hide";
+        }
+    </script>
+
+</body>
+
+</html>
