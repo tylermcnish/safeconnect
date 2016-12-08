@@ -25,7 +25,6 @@ def address(request):
     if request.method == 'POST':
         house_form = House_Form(request.POST)
         if house_form.is_valid():
-            print house_form.cleaned_data['address']
             #put new house and calculated max roof capacity in database
             instance=house_form.save(commit=False)
             instance.max_roof_capacity=instance.roof_area/1.5*.240
@@ -47,7 +46,6 @@ def address(request):
 def electricity(request):
     a = request.session.get('pass_address')
     instance=House.objects.get(address=a)
-    print instance.address
     electricity_form = Electricity_Form(request.POST, instance=instance)
     if request.method == 'POST':
         if electricity_form.is_valid():
@@ -66,7 +64,6 @@ def roof(request):
     a = request.session.get('pass_address')
     instance=House.objects.get(address=a)
     roof_form = Roof_Form(request.POST, instance=instance)
-    print instance.address
     if request.method == 'POST':
         if roof_form.is_valid():
             roof_form.save(commit=False)
@@ -117,7 +114,6 @@ def system(request):
     a = request.session.get('pass_address')
     instance=House.objects.get(address=a)
     #calculate system size and related info
-    #print instance.busbar_capacity
     #if instance.is_there_room_for_new_breaker_opposite_main_breaker == 'Yes':
     #    breaker_factor=1
     #else:
