@@ -4,8 +4,12 @@ from .forms import House_Form
 from .forms import Electricity_Form
 from .forms import Roof_Form
 from .forms import Electrical_Service_Form
+from .forms import House_Availability_Form
 from django.http import HttpResponseRedirect
 from .models import House
+from .models import House_Availability
+from .models import Receptacle_Installer
+from .models import Receptacle_Installer_Availability
 from decimal import Decimal
 
 
@@ -88,52 +92,56 @@ def electrical(request):
                 breaker_factor=1
             else:
                 breaker_factor=0
-            method1=instance.busbar_capacity-instance.main_breaker_size
-            method2=(int(instance.busbar_capacity)*1.2*int(breaker_factor)-int(instance.main_breaker_size))/1.25
+            method1=(instance.busbar_capacity-instance.main_breaker_size)/1.25
+            method2=int(breaker_factor)*(instance.busbar_capacity*1.2-instance.main_breaker_size)/1.25
             instance.max_electrical_system_capacity_amps=max(method1, method2)
             instance.max_electrical_system_capacity_kW=instance.max_electrical_system_capacity_amps*240/1000
-            instance.system_capacity=min(instance.desired_system_capacity, instance.max_roof_capacity, instance.max_electrical_system_capacity_kW, 7.6)
-            instance.number_of_modules=instance.system_capacity/.240
+            instance.system_capacity=Decimal(min(instance.desired_system_capacity, instance.max_roof_capacity, instance.max_electrical_system_capacity_kW, 7.68))
+            instance.number_of_modules=int(instance.system_capacity/Decimal(.240))
             instance.system_value=instance.system_capacity*1000*1+2000
-            instance.system_production=instance.system_capacity*.18*365*24
+            instance.system_production=instance.system_capacity*Decimal(.18)*Decimal(365)*Decimal(24)
             instance.percent_of_electric_bill=instance.system_production/(int(instance.monthly_electricity_usage)*12)*100
-            if instance.system_capacity>3.8:
+            if instance.system_capacity>3.85:
                 instance.smartbox_size=40
             else:
                 instance.smartbox_size=20
             request.session['pass_address'] = a
             electrical_service_form.save()
-            context = {'address':instance.address, 'insolation':instance.insolation, 'roof_area':instance.roof_area, 'max_roof_capacity':instance.max_roof_capacity, 'max_roof_production':instance.max_roof_production, 'monthly_electricity_usage':instance.monthly_electricity_usage, 'desired_system_capacity':instance.desired_system_capacity, 'roof_type':instance.roof_type, 'cable_length':instance.cable_length,'max_electrical_system_capacity_kW':instance.max_electrical_system_capacity_kW,'system_capacity':instance.system_capacity, 'smartbox_size': instance.smartbox_size, 'number_of_modules': instance.number_of_modules, 'system_value': instance.system_value, 'system_production': instance.system_production, 'percent_of_electric_bill':instance.percent_of_electric_bill}
+            house_availability_form = House_Availability_Form(request.POST, instance=instance)
+            context = {'address':instance.address, 'insolation':instance.insolation, 'roof_area':instance.roof_area, 'max_roof_capacity':instance.max_roof_capacity, 'max_roof_production':instance.max_roof_production, 'monthly_electricity_usage':instance.monthly_electricity_usage, 'desired_system_capacity':instance.desired_system_capacity, 'roof_type':instance.roof_type, 'cable_length':instance.cable_length,'max_electrical_system_capacity_kW':instance.max_electrical_system_capacity_kW,'system_capacity':instance.system_capacity, 'smartbox_size': instance.smartbox_size, 'number_of_modules': instance.number_of_modules, 'system_value': instance.system_value, 'system_production': instance.system_production, 'percent_of_electric_bill':instance.percent_of_electric_bill,}
             return render(request,'buy/system.html',context)
     else:
         context = {'electrical_service_form':electrical_service_form}
         return render(request,'buy/electrical.html',context)
 
-def system(request):
-    #get house record from middleware
-    a = request.session.get('pass_address')
-    instance=House.objects.get(address=a)
-    #calculate system size and related info
-    #if instance.is_there_room_for_new_breaker_opposite_main_breaker == 'Yes':
-    #    breaker_factor=1
-    #else:
-    #    breaker_factor=0
-    #method1=instance.busbar_capacity-instance.main_breaker_size
-    #method2=(int(instance.busbar_capacity)*1.2*int(breaker_factor)-int(instance.main_breaker_size))/1.25
-    #max_electrical_system_capacity_amps=max(method1, method2)
-    #max_electrical_system_capacity_kW=max_electrical_system_capacity_amps*240/1000
-    #max_roof_capacity=instance.roof_area*instance.insolation/1000
-    #desired_system_capacity=(int(instance.monthly_electricity_usage)*12)/(int(instance.insolation)*0.2)/1000
-    #system_capacity=min(desired_system_capacity, max_roof_capacity, max_electrical_system_capacity_kW, 7.6)
-    #number_of_modules=system_capacity/240
-    #if system_capacity>3.8:
-    #    smartbox_size=40
-    #else:
-    #    smartbox_size=20
-    #cable_length=instance.stories*20
-    #roof_type=instance.roof_type
-    #make variables available for use on template
-    context = {'address':instance.address, 'insolation':instance.insolation, 'roof_area':instance.roof_area, 'max_roof_capacity':instance.max_roof_capacity, 'max_roof_production':instance.max_roof_production, 'monthly_electricity_usage:':instance.monthly_electricity_usage, 'desired_system_capacity:':instance.desired_system_capacity, 'roof_type':instance.roof_type, 'cable_length':instance.cable_length,'max_electrical_system_capacity_kW':instance.max_electrical_system_capacity_kW,'system_capacity':instance.system_capacity, 'smartbox_size': instance.smartbox_size, 'number_of_modules': instance.number_of_modules}
-    #render the system page
-    return render(request,'buy/system.html',context)
+def installation(request):
+    #note: I can't get this to validate the data properly and save to the database, but I can use the non-cleaned data (request.Post.get) to populate teh receptacle installer list, which is good enough for mockup now.
+    #a = request.session.get('pass_address')
+    #instance=House.objects.get(address=a)
+    #new_house_availability = House_Availability(name=instance.address, available_date='2016-12-10')
+    #print new_house_availability
+    #new_house_availability.save()
+    house_availability_form = House_Availability_Form(request.POST)
+    if request.method == 'POST':
+        print request.POST.get('available_date')
+        x=request.POST.get('available_date')
+        if house_availability_form.is_valid():
+            selected_date=house_availability_form.cleaned_data
+            receptacle_installer_list=Receptacle_Installer.objects.filter(receptacle_installer_availability__available_date=x)
+            #house_availability_form.save()
+            context = {'house_availability_form':house_availability_form, 'receptacle_installer_list':receptacle_installer_list}
+            return render(request,'buy/installation.html',context)
+        else:
+            #selected_date=x
+            #receptacle_installer_list=Receptacle_Installer.objects.filter(receptacle_installer_availability__available_date=selected_date)
+            #print selected_date
+            #print receptacle_installer_list
+            print 'error'
+            print house_availability_form.errors, len(house_availability_form.errors)
+            context = {'house_availability_form':house_availability_form, 'receptacle_installer_list':receptacle_installer_list}
+            return render(request,'buy/installation.html',context)
+            
+    else:
+        context = {'house_availability_form':house_availability_form}
+        return render(request,'buy/installation.html',context)
     
