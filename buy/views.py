@@ -123,7 +123,6 @@ def installation(request):
     #new_house_availability.save()
     house_availability_form = House_Availability_Form(request.POST)
     if request.method == 'POST':
-        print request.POST.get('available_date')
         x=request.POST.get('available_date')
         if house_availability_form.is_valid():
             selected_date=house_availability_form.cleaned_data
@@ -132,12 +131,6 @@ def installation(request):
             context = {'house_availability_form':house_availability_form, 'receptacle_installer_list':receptacle_installer_list}
             return render(request,'buy/installation.html',context)
         else:
-            #selected_date=x
-            #receptacle_installer_list=Receptacle_Installer.objects.filter(receptacle_installer_availability__available_date=selected_date)
-            #print selected_date
-            #print receptacle_installer_list
-            print 'error'
-            print house_availability_form.errors, len(house_availability_form.errors)
             context = {'house_availability_form':house_availability_form, 'receptacle_installer_list':receptacle_installer_list}
             return render(request,'buy/installation.html',context)
             
