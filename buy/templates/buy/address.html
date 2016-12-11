@@ -53,27 +53,11 @@
             <!-- Need to grey out for inaccessible pages -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    {% for l in links %}
                     <li>
-                        <a class="page-scroll"  href="#address">Address > </a>
+                        <a class="{{l.2}}"  href="{{l.1}}">{{l.0}}</a>
                     </li>
-                    <li>
-                        <a class="disabled">Electric Bill > </a>
-                    </li>
-                    <li>
-                        <a class="disabled">Roof > </a>
-                    </li>
-                    <li>
-                        <a class="disabled">House Electrical > </a>
-                    </li>
-                    <li>
-                        <a class="disabled">Financing  > </a>
-                    </li>
-                    <li>
-                        <a class="disabled"> Installation > </a>
-                    </li>
-                    <li>
-                        <a class="disabled">Purchase! </a>
-                    </li>
+                    {% endfor %}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

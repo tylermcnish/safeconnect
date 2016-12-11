@@ -1,10 +1,15 @@
 nav a.disabled {
     color: darkgrey !important;
+    cursor: default !important;
 }
 
 .hide {
     position: absolute !important;
     left: -9999px !important;
+}
+
+div.content, div.section-heading {
+  margin-bottom: 0px !important;
 }
 
 footer p.data {

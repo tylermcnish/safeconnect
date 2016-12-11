@@ -62,6 +62,8 @@ class House(models.Model):
     system_value=models.DecimalField(max_digits=8, decimal_places=2, default=0)
     system_production=models.DecimalField(max_digits=6, decimal_places=0, default=0)
     percent_of_electric_bill=models.DecimalField(max_digits=6, decimal_places=0, default=0)
+    receptacle_installer=models.ForeignKey(Receptacle_Installer, on_delete=models.CASCADE, null=True, blank=True)
+    receptacle_installation_date=models.DateField(blank=True, null=True)
     def __str__(self):
         return self.address
 
