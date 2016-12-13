@@ -29,20 +29,21 @@ footer p.data.hide {
     border: 1px solid;
 }
 
+a:hover,
+a:focus {
+  color: #F48230 !important;
+}
+
 .btn-outline:hover,
 .btn-outline:focus,
 .btn-outline:active,
 .btn-outline.active {
-    color: white;
+    color: white !important;
     background-color: #F48230;
     border-color: #F48230
     border: 1px solid;
 }
 
-a:hover,
-a:focus {
-  color: white !important;
-}
 
 .navbar-default .navbar-header .navbar-brand:hover,
 .navbar-default .navbar-header .navbar-brand:focus {
@@ -95,4 +96,15 @@ footer {
     display: inline-block;
     vertical-align: middle;
     float: none;
+}
+
+
+/*sets icon gradient color*/
+
+section.features .feature-item i {
+  font-size: 80px;
+  background: -webkit-linear-gradient(to left, #7b4397, #dc2430);
+  background: linear-gradient(to left, #F48230, #de8891);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

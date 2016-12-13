@@ -79,14 +79,17 @@
                         {% if img_url%}
                         <img src="{% static img_url %}" class="img-responsive" alt="image is supposed to go here" style="height:400px;display:block;margin-left:auto;margin-right:auto">
                         {% endif %}
+                        {%if note%}
+                        <br>
                         <p class="text-muted">{{note}}</p>
+                        {% endif %}
                         <form method="POST" class="" action="{{action}}" id="form">
                             {% csrf_token %}
                             {{ form.as_p }}
                             <!--<button type="submit" class="">Submit</button>-->
                         </form>
                         <br>
-                        <a href="#address2" onclick="document.getElementById('form').submit();" class="btn btn-outline btn-xl page-scroll">Submit</a>
+                        <a href="#address2" onclick="document.getElementById('form').submit();" class="btn btn-outline btn-xl page-scroll">Next Step</a>
                         <hr>
                     </div>
                 </div>

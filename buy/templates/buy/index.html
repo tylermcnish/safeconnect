@@ -28,17 +28,69 @@
 
     <!-- Theme CSS -->
     <link href="{% static 'css/new-age.min.css' %}" rel="stylesheet">
-        <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
     
-      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+                google.charts.load('current', {packages: ['corechart']});
+                google.charts.setOnLoadCallback(drawChart);
+
+                function drawChart() {
+                    var chart;
+                    var options;
+                    var data;
+                    data = google.visualization.arrayToDataTable([
+                                                                    ['Item', 'Electric Bill', 'Competitors Solar Bill', 'SafeConnect Solar Bill', {role: 'annotation'}],
+                                                                    ['Current Electric Bill', 150, 0, 0, 'Total Monthly: $150'],            
+                                                                    ['Competitors Solar Bill', 30, 90,0,'Total Monthly: $120'],            
+                                                                    ['SafeConnect Solar Bill', 30, 0, 45,'Total Monthly: $75'],
+                                                                    ], false);
+                    
+                        // Create a formatter.
+                        formatter = new google.visualization.NumberFormat({prefix: '$' });
+                                                                                                   
+                        // Reformat columns 1-4
+                        formatter.format(data, 1);
+                        formatter.format(data, 2);
+                        formatter.format(data, 3);
     
+                    options = {
+                        'height': 400,
+                        'isStacked': true,
+                        'legend': { position: "right", alignment: "center" },
+                        'series': {
+                            0: {
+                            color: '#D3D3D3'
+                            },
+                            1: {
+                            color: '#245BA6'
+                            },
+                            2: {
+                            color: '#F48230'
+                             },
+                        },
+                        'vAxis': {
+                            format: 'currency',
+                            //title: "Energy Bill ($/month)",
+                            maxValue: 200,
+                            gridlines: {
+                                count: 0
+                            }
+                        },
+                        annotations: {
+                            alwaysOutside: true,
+                            textStyle: {
+                            fontSize: 12,
+                            color: 'black',
+                            },
+                        },
+                        };
 
-
+                    chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+                    chart.draw(data, options);
+                    }    
+        </script>
 </head>
 
 <body id="page-top">
@@ -61,7 +113,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#learn_more">Why SafeConnect?</a>
+                        <a class="page-scroll" href="#features">Why SafeConnect?</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#">Installer Login</a>
@@ -85,7 +137,7 @@
                     <div class="header-content-inner">
                         <h1>SafeConnect is the easy, affordable way to go solar</h1>
                         <a href="/address" class="btn btn-outline btn-xl page-scroll">Design Your System</a>
-                        <a href="#learn_more" class="btn btn-outline btn-xl page-scroll">Learn More</a>
+                        <a href="#features" class="btn btn-outline btn-xl page-scroll">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -102,7 +154,7 @@
     </div>
 </header>
 
-    <section id="learn_more" class="features">
+    <section id="features" class="features">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -110,63 +162,65 @@
                         <h2>A new way to go solar</h2>
                         <p class="text-muted">Save time and money with SafeConnect's solar-as-appliance model.</p>
                         <hr>
+                        <br>
+                        <br>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
+                    <br>
+                    <br>
                     <div class="device-container">
                         <div class="device-mockup ipad_air_2">
                             <div class="device">
                                 <div class="screen">
                                     <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                                    <img src="{% static 'img/screenshot.png'%}" class="img-responsive" alt=""> </div>
-                                <div class="button">
-                                    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+                                    <img src="{% static 'img/screenshot.png'%}" class="img-responsive" alt="">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-8">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="feature-item">
-                                    <i class="icon-screen-desktop text-primary"></i>
-                                    <h3>No sales guys<h3>
-                                        <p class="text-muted">SafeConnect's solar-as-appliance model and up-front pricing eliminates the expensive sales process and makes sure you get the best deal possible.</p>
-                                </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="feature-item">
+                                <i class="icon-screen-desktop text-primary"></i>
+                                <h3>No sales guys<h3>
+                                <p class="text-muted">SafeConnect's web-based, up-front pricing eliminates the expensive sales process and gets you a better deal.</p>
                             </div>
-                           
-                            <div class="col-md-6">
-                                <div class="feature-item">
-                                    <i class="icon-wallet text-primary"></i>
-                                    <h3>No Money Down</h3>
-                                    <p class="text-muted">If you sign up for our third party financing, you can start saving money on your electrical bill with no money down and no risk.  (We also offer cash purcahse options.)</p>
-                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="feature-item">
+                                <i class="icon-wallet text-primary"></i>
+                                <h3>No Money Down</h3>
+                                <p class="text-muted">Start saving on your electrical bill with no money down and no risk.  (We also offer cash purchase options.)</p>
                             </div>
+                        </div>
+                    </div>            
                             
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="feature-item">
-                                    <i class="icon-power text-primary"></i>
-                                    <h3>It just works</h3>
-                                    <p class="text-muted">SafeConnect sells solar appliances, not materials.  Everything works together out of the box and is UL-certified as an appliance.</p>
-                                </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="feature-item">
+                                <i class="icon-power text-primary"></i>
+                                <h3>It just works</h3>
+                                <p class="text-muted">SafeConnect sells complete ready-to-use solar appliances, not custom contracting jobs.  Everything works out of the box and is UL-certified as an appliance.</p>
                             </div>
+                        </div>
                             
-                            <div class="col-md-6">
-                                <div class="feature-item">
-                                    <i class="icon-umbrella text-primary"></i>
-                                    <h3>Safety First</h3>
-                                    <p class="text-muted">SafeConnect's proprietary safety smartbox continuosly monitors your system to protect your home from electrical danger.</p>
-                                </div>
+                        <div class="col-md-6">
+                            <div class="feature-item">
+                                <i class="icon-umbrella text-primary"></i>
+                                <h3>Safety First</h3>
+                                <p class="text-muted">SafeConnect's proprietary safety smartbox continuosly monitors your system to protect your home from electrical danger.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </section>
     
     <section id="learn_more2" class="features">
@@ -175,14 +229,19 @@
                 <div class="col-lg-12 text-center">
                     <div class="section-heading">
                         <h2>A better deal</h2>
-                        <p class="text-muted">SafeConnect's customers save over $5,000 more on average over the life of their systems than our competitors.*  By "appliancizing" solar, SafeConnect has reduced the cost of design, sales, installation, and permitting.  This allows us to offer our customers lower prices and greater savings than our competitors. </p>
+                        <p class="text-muted">SafeConnect's customers save [$5,000*] more on average than our competitors' customers.  By "appliancizing" solar, SafeConnect has reduced the cost of design, sales, installation, and permitting.  This allows us to offer our lower prices and greater savings.</p>
                         <hr>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container">
-          <img src="{% static 'img/competition.png'%}" class="img-responsive" alt="" style="height:500px;display:block;margin-left:auto;margin-right:auto">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 text-center" >
+                    <div id="chart_div" style="margin-left:auto;margin-right:auto;display:block">
+                    </div>
+                </div>
+            </div> 
         </div>
     </section>
     
@@ -191,17 +250,14 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="section-heading">
-                        <h2>A complete solar appliance.</h2>
-                        <p class="text-muted">SafeConnect's patent-pending technology has appliancized solar.  Our competitors will offer you "estimated savings" or "preliminary quotes" -- but they won't be able to sell you a system without sales calls, custom design work, and specialized permitting.  We don't just estimate the cost of your system--we'll actually ship it to you as soon as you sign our online, zero-money-down paperwork.   And we'll help you choose an installer at a fixed price from our list of certified installation partners.</p>
+                        <h2>The first complete solar appliance</h2>
+                        <p class="text-muted">SafeConnect's patent-pending safety technology allows us to offer the first complete, UL-approved solar appliance.  The appliance plugs into a standardized "PV Plug" (akin to a 240 V dryer plug) and flashed roof mounts.  We'll help you choose a qualified local installer to get this infrastructure set up for you prior to the delivery and installation fo your appliance.</p>
                         <hr>
                     </div>
                 </div>
             </div>
-            <div class="container">
+            <div class="container-fluid">
                 <img src="{% static 'img/pv_appliance.png'%}" class="img-responsive" alt="" style="height:500px;display:block;margin-left:auto;margin-right:auto">
-                    </div>
-            <div class="container">
-                <p style="text-align: center" class="text-muted">[Above graphic will be illustration showing components of complete system with callouts showing detail of smartbox, etc. ].</p>
             </div>
             </section>
 
@@ -245,6 +301,8 @@
 
     <!-- Theme JavaScript -->
     <script src="{% static 'js/new-age.js' %}"></script>
+    
+
 
 </body>
 
