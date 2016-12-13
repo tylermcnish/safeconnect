@@ -189,9 +189,7 @@ def installation(request):
     if request.method == 'POST':
         #this is triggered if a list of installers has been generated and one has been selected by user.
         if 'receptacle_installer' in request.POST:
-            print "yes"
             y=request.POST.get('receptacle_installer')
-            print y
             n=Receptacle_Installer.objects.get(pk=y)
             instance.receptacle_installer=n
             instance.save()
@@ -210,12 +208,10 @@ def installation(request):
             return render(request,'buy/installation.html',context) 
         #not sure when this is triggered
         else:
-            print "no form valid"
             context = {'house_availability_form':house_availability_form, 'text':text, 'header_text': header_text, 'action':action, 'note':note}
             return render(request,'buy/installation.html',context)
     #this is triggered when page first viewed and no date yet selected.        
     else:
-        print "no POST"
         text="Select a date to see SafeConnect electrician partners available to install your PV Plug."
         context = {'house_availability_form':house_availability_form, 'text':text, 'header_text': header_text, 'action':action, 'note':note}
         return render(request,'buy/installation.html',context)
@@ -223,7 +219,6 @@ def installation(request):
 #Once you have the form submission for the installer figured out, make separate similar views for next two forms, using same template.  Need to build databases and forms.
 
 def roof_installation(request):
-    print "roof install triggered"
     house_availability_form=House_Availability_Form(request.POST)
     header_text="Schedule Roof Mount Installation"
     text="Select a date to see SafeConnect roofer partners available to install your PV Plug."
@@ -235,20 +230,15 @@ def roof_installation(request):
     instance=Appliance.objects.get(pk=a)
     if request.method == 'POST':
         #this is triggered if a list of installers has been generated and one has been selected by user.
-        print "post triggered"
         if 'roof_installer' in request.POST:
-            print "yes"
             y=request.POST.get('roof_installer')
             n=Roof_Installer.objects.get(pk=y)
-            print y
-            print n
             instance.roof_installer=n
             instance.save()
             request.session['pass_appliance'] = a
             return appliance_installation(request)
         #this is triggered when house picker is used, and list of installers not yet generated
         elif house_availability_form.is_valid():
-            print "availability triggered"
             x=request.POST.get('available_date')
             #generate list of available installers
             installer_list=Roof_Installer.objects.filter(roof_installer_availability__available_date=x)
@@ -260,7 +250,6 @@ def roof_installation(request):
             return render(request,'buy/installation.html',context) 
     #not sure when this is triggered
         else:
-            print "default post triggered"
             context = {'house_availability_form':house_availability_form, 'text':text, 'header_text': header_text, 'action':action, 'note':note, 'href':href}
             return render(request,'buy/installation.html',context)
     else:
@@ -268,7 +257,6 @@ def roof_installation(request):
         return render(request,'buy/installation.html',context)
 
 def appliance_installation(request):
-    print "roof install triggered"
     house_availability_form=House_Availability_Form(request.POST)
     header_text="Schedule Appliance Installation"
     text="Select a date to see SafeConnect appliance partners available to install your appliance."
@@ -280,19 +268,14 @@ def appliance_installation(request):
     instance=Appliance.objects.get(pk=a)
     if request.method == 'POST':
         #this is triggered if a list of installers has been generated and one has been selected by user.
-        print "post triggered"
         if 'appliance_installer' in request.POST:
-            print "yes"
             y=request.POST.get('appliance_installer')
             n=Appliance_Installer.objects.get(pk=y)
-            print y
-            print n
             instance.appliance_installer=n
             instance.save()
             return purchase(request)
         #this is triggered when house picker is used, and list of installers not yet generated
         elif house_availability_form.is_valid():
-            print "availability triggered"
             x=request.POST.get('available_date')
             #generate list of available installers
             installer_list=Appliance_Installer.objects.filter(appliance_installer_availability__available_date=x)
@@ -304,7 +287,6 @@ def appliance_installation(request):
             return render(request,'buy/installation.html',context) 
     #not sure when this is triggered
         else:
-            print "default post triggered"
             context = {'house_availability_form':house_availability_form, 'text':text, 'header_text': header_text, 'action':action, 'note':note, 'href':href}
             return render(request,'buy/installation.html',context)
     else:
