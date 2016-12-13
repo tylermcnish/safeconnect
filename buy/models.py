@@ -27,6 +27,36 @@ class Receptacle_Installer_Availability(models.Model):
     def __str__(self):
         return self.name.name   
 
+class Roof_Installer(models.Model):
+    name=models.CharField(max_length=200)
+    address=models.CharField(max_length=200)
+    about=models.CharField(max_length=1000, default="info about me here")
+    price=models.DecimalField(max_digits=9, decimal_places=2, default=750)
+    roof_installer_pic= models.ImageField(upload_to="")
+    def __str__(self):
+        return self.name
+    
+class Roof_Installer_Availability(models.Model):
+    name=models.ForeignKey(Roof_Installer, on_delete=models.CASCADE)
+    available_date=models.DateField(blank=True, null=True)
+    def __str__(self):
+        return self.name.name  
+
+class Appliance_Installer (models.Model):
+    name=models.CharField(max_length=200)
+    address=models.CharField(max_length=200)
+    about=models.CharField(max_length=1000, default="info about me here")
+    price=models.DecimalField(max_digits=9, decimal_places=2, default=750)
+    appliance_installer_pic= models.ImageField(upload_to="")
+    def __str__(self):
+        return self.name
+    
+class Appliance_Installer_Availability(models.Model):
+    name=models.ForeignKey(Appliance_Installer, on_delete=models.CASCADE)
+    available_date=models.DateField(blank=True, null=True)
+    def __str__(self):
+        return self.name.name 
+    
 class House(models.Model):
     address=models.CharField(max_length=200)
     insolation=models.DecimalField(max_digits=6, decimal_places=3, default=5)
@@ -56,6 +86,11 @@ class House(models.Model):
     is_there_room_for_new_breaker_opposite_main_breaker=models.CharField(max_length=200, choices=ROOM_CHOICES, default="Yes")
     max_electrical_system_capacity_amps=models.DecimalField(max_digits=6, decimal_places=0, default=0)
     max_electrical_system_capacity_kW=models.DecimalField(max_digits=6, decimal_places=0, default=0)
+    def __str__(self):
+        return self.address
+    
+class Appliance(models.Model):
+    house=models.ForeignKey(House, on_delete=models.CASCADE, null=True)
     system_capacity=models.DecimalField(max_digits=6, decimal_places=0, default=0)
     number_of_modules=models.IntegerField(default=0)
     smartbox_size=models.IntegerField(default=0)
@@ -64,38 +99,18 @@ class House(models.Model):
     percent_of_electric_bill=models.DecimalField(max_digits=6, decimal_places=0, default=0)
     receptacle_installer=models.ForeignKey(Receptacle_Installer, on_delete=models.CASCADE, null=True, blank=True)
     receptacle_installation_date=models.DateField(blank=True, null=True)
+    roof_installer=models.ForeignKey(Roof_Installer, on_delete=models.CASCADE, null=True, blank=True)
+    roof_installation_date=models.DateField(blank=True, null=True)
+    appliance_installer=models.ForeignKey(Appliance_Installer, on_delete=models.CASCADE, null=True, blank=True)
+    appliance_installation_date=models.DateField(blank=True, null=True)
     def __str__(self):
-        return self.address
+        return self.house.address
 
 class House_Availability(models.Model):
     name=models.ForeignKey(House, on_delete=models.CASCADE)
     available_date=models.DateField(blank=True, null=True)
     def __str__(self):
-        return self.name.name 
-    
-class System(models.Model):
-    system_size=models.DecimalField(max_digits=5, decimal_places=2, default=0)
-    cable_length=models.DecimalField(max_digits=5, decimal_places=2, default=0)
-    roof_peg_type=models.DecimalField(max_digits=5, decimal_places=2, default=0)
-    BIG='7.6kW'
-    SMALL='3.8kW'
-    SMARTBOX_CHOICES = ((BIG,"7.6kW"),(SMALL,"3.8kW"))
-    smartbox_size = models.CharField(max_length=20, choices=SMARTBOX_CHOICES, default='3.8kW')
-    smartbox_size=models.DecimalField(max_digits=5, decimal_places=2, default=0)
-    house=models.ForeignKey(House, on_delete=models.CASCADE)
-    def __str__(self):
-        return self.name
-
-class Receptacle_Installation(models.Model):
-    name=models.CharField(max_length=200)
-    cost=models.CharField(max_length=200)
-    receptacle_installer=models.ForeignKey(Receptacle_Installer, on_delete=models.CASCADE)
-    customer=models.ForeignKey(Customer, on_delete=models.CASCADE)
-    house=models.ForeignKey(House, on_delete=models.CASCADE, null=True)
-    start_date_time=models.DateTimeField(null=True)
-    end_date_time=models.DateTimeField(null=True)
-    def __str__(self):
-        return self.name    
+        return self.name.name  
     
 class Payment_Method(models.Model):
     name = models.CharField(max_length=200)
@@ -110,9 +125,8 @@ class Payment_Method(models.Model):
 class Transaction(models.Model):
     name = models.CharField(max_length=200)
     type = models.CharField(max_length=200)
-    system=models.ForeignKey(System, on_delete=models.CASCADE)
+    appliance=models.ForeignKey(Appliance, on_delete=models.CASCADE)
     customer=models.ForeignKey(Customer, on_delete=models.CASCADE)
-    receptacle_installation=models.ForeignKey(Receptacle_Installation, on_delete=models.CASCADE)
     payment_method=models.ForeignKey(Payment_Method, on_delete=models.CASCADE)
     shipping_cost=models.DecimalField(max_digits=5, decimal_places=2, default=0)
     tax=models.DecimalField(max_digits=5, decimal_places=2, default=0)

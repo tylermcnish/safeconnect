@@ -131,25 +131,31 @@
                    <!-- <a class="btn btn-outline btn-xl page-scroll" onclick="document.getElementById('house_availability_form').submit();">See Available Installers</a>-->
                 </div>
                 <div class="col-md-9" text-center>
-                    {% for receptacle_installer in receptacle_installer_list %}
+                    {% for installer in installer_list %}
                     <div class="row">
                         <div class="col-md-4" style="text-align: center;">
-                                {% block content %}
-                                <img height="100px" src="{{ receptacle_installer.receptacle_installer_pic.url }}">
-                                {% endblock %}
+                            {% if button_name == "receptacle_installer" %}
+                               <img height="100px" src="{{ installer.receptacle_installer_pic.url }}">
+                            {% endif %}
+                            {% if button_name == "roof_installer" %}
+                               <img height="100px" src="{{ installer.roof_installer_pic.url }}">
+                            {% endif %}
+                            {% if button_name == "appliance_installer" %}
+                               <img height="100px" src="{{ installer.appliance_installer_pic.url }}">
+                            {% endif %}
                                 <br>
                                 <br>
-                                <form method="POST" class="" action="installation" id={{receptacle_installer.name}}>
+                                <form method="POST" class="" action="{{action}}">
                                 {% csrf_token %}
-                                <button type="submit" class="" name=installer value={{receptacle_installer.pk}}>Select</button>
+                                <button type="submit" class="" name="{{button_name}}" value="{{installer.pk}}">Select</button>
                                 </form>
                                 <br>
                                 <!--<a href="#" onclick="document.getElementById('form').submit();" class="btn btn-outline btn-xl page-scroll">Select</a>-->
                         </div>
                         <div class="col-md-8" style="text-align: left;">  
-                            <p style="color:#F48230">{{ receptacle_installer.name }}</p>
-                            <p class="text-muted">${{ receptacle_installer.price }}</p>
-                            <p class="text-muted">{{ receptacle_installer.about }}</p>
+                            <p style="color:#F48230">{{ installer.name }}</p>
+                            <p class="text-muted">${{ installer.price }}</p>
+                            <p class="text-muted">{{ installer.about }}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -167,7 +173,7 @@
    
     
   </div>
-    <footer>
+       <footer>
         <div class="container">
             <div class="col-lg-12">
                 <p class="data" style="text-align:center;font-weight:bold">Address: {{address}}</p>
